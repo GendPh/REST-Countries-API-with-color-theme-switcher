@@ -14,13 +14,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
+  // hold the regions of the countries to filter by region and the search string connect by two way data binding
   public regions: string[] = [];
-
   public search: string = '';
 
   constructor(private countriesService: CountriesService, private router: Router) { }
 
   ngOnInit(): void {
+    // get the regions of the countries
     this.countriesService.getRegions().subscribe(
       {
         next: (regions) => {

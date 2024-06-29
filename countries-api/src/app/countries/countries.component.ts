@@ -17,7 +17,9 @@ export class CountriesComponent implements OnInit, OnDestroy {
   constructor(public countriesService: CountriesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    // get from the route the param region
     this.route.queryParams.subscribe(params => {
+      // if exist a param region load the countries by region else load all the countries
       if (params != null && params['region'] != null) {
         const region = params['region'];
         this.loadCountriesByRegion(region);
@@ -27,10 +29,12 @@ export class CountriesComponent implements OnInit, OnDestroy {
     });
   }
 
+  // reset the search when the component is destroyed
   ngOnDestroy(): void {
     this.countriesService.resetSearch();
   }
 
+  // load all the countries
   private loadAllCountries(): void {
     this.countriesService.getCountries().subscribe(
       {
@@ -48,6 +52,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
       }
     );
   }
+  // load the countries by region
   private loadCountriesByRegion(region: string): void {
     this.countriesService.getCountriesByRegion(region).subscribe(
       {
