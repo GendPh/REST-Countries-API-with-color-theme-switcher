@@ -1,0 +1,14 @@
+<article class="w-[264px] mx-auto rounded-t-[5px] cursor-pointer text-m"
+  style="box-shadow: 0 0 7px 2px rgba(0,0,0, 0.2);" [routerLink]="['/country', country?.name]">
+  <figure class="w-full h-[160px] block bg-theme-primary rounded-t-[5px]">
+    <img loading="lazy" [src]="country?.flags?.svg" [alt]="country?.name + 'Flag'"
+      class="w-full h-full object-cover rounded-t-[5px]">
+  </figure>
+  <div class="bg-theme-secondary pt-6 px-6 pb-[46px] rounded-b-[5px]">
+    <h2 class="text-l font-extrabold mb-4">{{country?.name}}</h2>
+
+    <p class="font-light"><span class="font-semibold">Population:</span> {{country?.population}}</p>
+    <p class="font-light my-2"><span class="font-semibold">Region:</span> {{country?.region}}</p>
+    <p class="font-light"><span class="font-semibold">Capital:</span> {{country?.capital}}</p>
+  </div>
+</article>

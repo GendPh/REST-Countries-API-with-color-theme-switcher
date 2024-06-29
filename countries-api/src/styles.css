@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    @apply bg-theme-primary text-theme;
+  }
+}
+
+@layer components {
+  .bg-theme-primary {
+    @apply bg-bg-light-primary dark:bg-bg-dark-primary duration-150 transition-colors;
+  }
+  .bg-theme-secondary {
+    @apply bg-bg-light-secondary dark:bg-bg-dark-secondary duration-150 transition-colors;
+  }
+  .svg-theme {
+    @apply fill-bg-dark-secondary dark:fill-bg-light-secondary duration-150 transition-colors;
+  }
+  .text-theme {
+    @apply text-text-light dark:text-text-dark duration-150 transition-colors;
+  }
+  .text-sm {
+    @apply text-[12px] leading-[20px];
+  }
+  .text-m {
+    @apply text-[14px] leading-[16px];
+  }
+  .text-l {
+    @apply text-[18px] leading-[26px];
+  }
+  .text-xl {
+    @apply text-[22px];
+  }
+  .shadow {
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.3);
+  }
+}

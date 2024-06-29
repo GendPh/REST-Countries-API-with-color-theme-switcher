@@ -1,0 +1,53 @@
+<main class="mt-10 px-7 pb-10">
+  @if(!countryService.countryLoaded()){
+  <app-country-loader />
+  }@else if(countryService.countryLoaded() && !countryService.countryLoadedFailed()){
+  <section class="animate-fade-in">
+    <button routerLink="/" class=" shadow flex gap-2 bg-theme-secondary items-center py-[6px] px-[23px] rounded-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      Back
+    </button>
+
+    <article class="mt-16 grid gap-11">
+
+      <figure class="w-full min-h-[229px] block bg-theme-secondary">
+        <img class="w-full h-full object-cover" [src]="countryService.countrySignal()?.flag"
+          [alt]="countryService.countrySignal()?.name + ' flag'" *ngIf="countryService.countrySignal()">
+      </figure>
+
+      <div>
+        <h1 class="text-xl font-extrabold">{{countryService.countrySignal()?.name}}</h1>
+
+        <div class="text-[14px] leading-8 font-semibold grid gap-8 mt-4">
+          <div>
+            <p>Native Name: <span class="font-light">{{countryService.countrySignal()?.nativeName}}</span></p>
+            <p>Population: <span
+                class="font-light">{{countryService.countrySignal()?.population?.toLocaleString('en-US')}}</span></p>
+            <p>Region: <span class="font-light">{{countryService.countrySignal()?.region}}</span></p>
+            <p>Sub Region: <span class="font-light">{{countryService.countrySignal()?.subregion}}</span></p>
+            <p>Capital: <span class="font-light">{{countryService.countrySignal()?.capital}}</span></p>
+          </div>
+
+          <div>
+            <p>Top Level Domain: <span class="font-light">{{countryService.countrySignal()?.topLevelDomain}}</span></p>
+            <p>Currencies: <span class="font-light">{{countryService.countrySignal()?.currencies?.[0]?.name}}</span></p>
+            <p>Languages: <span class="font-light">{{languages}}</span></p>
+          </div>
+
+          <div>
+            <h2 class="text-[16px] leading-6">Border Countries:</h2>
+            <div class="flex gap-[10px] items-start justify-start flex-wrap pt-4">
+              <button [routerLink]="['/country', name]"
+                class="py-[6px] px-[32px] text-[12px] font-light bg-theme-secondary shadow rounded-sm"
+                *ngFor="let name of borderCountries">{{name}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+  }
+</main>

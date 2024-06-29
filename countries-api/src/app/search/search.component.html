@@ -1,0 +1,41 @@
+<section class="flex flex-wrap justify-between gap-10 text-sm animate-fade-in">
+
+  <form class="flex bg-theme-secondary  rounded-[5px] px-8 py-4 gap-[26px] flex-grow max-w-[480px] shadow">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+      class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+
+    <input type="text" placeholder="Search for a country..." [(ngModel)]="search" name="search" id="search"
+      class="w-full bg-transparent placeholder:text-theme outline-none" (input)="searchCountry()">
+  </form>
+
+  <div
+    class="group cursor-pointer min-w-[200px] bg-theme-secondary rounded-[5px] px-6 py-[14px] flex justify-between items-center gap-[62px] relative shadow">
+    <p>Filter by Region</p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="size-[10px]">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+
+
+    <ul
+      class="opacity-0 transition-opacity duration-150 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto absolute z-50 rounded-[5px] top-full left-0 pt-1 w-full shadow">
+      <li
+        class="bg-theme-secondary first-of-type:rounded-t-[5px] last-of-type:rounded-b-[5px] px-6 py-2 first-of-type:pt-4 last-of-type:pb-4"
+        (click)="noRegion()">
+        Clear
+      </li>
+      <li
+        class="bg-theme-secondary first-of-type:rounded-t-[5px] last-of-type:rounded-b-[5px] px-6 py-2 first-of-type:pt-4 last-of-type:pb-4"
+        *ngFor="let reg of regions" (click)="getCountriesByRegion(reg)">
+        {{reg}}
+      </li>
+    </ul>
+  </div>
+
+
+
+</section>
