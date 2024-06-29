@@ -9,13 +9,13 @@
   <app-search />
 
   <!-- If a search isn't made it will appear all countries or all countries with region -->
-  <section class="mt-8 grid md:grid-cols-2 gap-10 animate-fade-in"
+  <section class="mt-8 grid md:grid-cols-3 lg:grid-cols-4 gap-10 lg:gap-[75px] animate-fade-in"
     *ngIf="countriesService.countriesSearchSignal() == null">
     <app-country-container [GetCountry]="country" *ngFor="let country of countriesService.countriesSignal()" />
   </section>
 
   <!-- If a search is made and isn't empty it will appear all countries filtered in the region or all -->
-  <section class="mt-8 grid md:grid-cols-2 gap-10 animate-fade-in"
+  <section class="mt-8 grid md:grid-cols-3 lg:grid-cols-4 gap-10 lg:gap-[75px] animate-fade-in"
     *ngIf="countriesService.countriesSearchSignal()?.length != 0">
     <app-country-container [GetCountry]="country" *ngFor="let country of countriesService.countriesSearchSignal()" />
   </section>

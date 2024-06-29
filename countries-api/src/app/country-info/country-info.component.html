@@ -11,17 +11,17 @@
       Back
     </button>
 
-    <article class="mt-16 grid gap-11">
+    <article class="mt-16 grid gap-11 lg:gap-[144px] lg:grid-cols-2">
 
-      <figure class="w-full min-h-[229px] block bg-theme-secondary">
+      <figure class="w-full min-h-[229px] max-h-[401px] h-full block bg-theme-secondary">
         <img class="w-full h-full object-cover" [src]="countryService.countrySignal()?.flag"
           [alt]="countryService.countrySignal()?.name + ' flag'" *ngIf="countryService.countrySignal()">
       </figure>
 
-      <div>
+      <div class="lg:flex flex-col justify-center">
         <h1 class="text-xl font-extrabold">{{countryService.countrySignal()?.name}}</h1>
 
-        <div class="text-[14px] leading-8 font-semibold grid gap-8 mt-4">
+        <div class="text-[14px] leading-8 font-semibold grid gap-8 mt-4 md:grid md:grid-cols-2">
           <div>
             <p>Native Name: <span class="font-light">{{countryService.countrySignal()?.nativeName}}</span></p>
             <p>Population: <span
@@ -37,17 +37,25 @@
             <p>Languages: <span class="font-light">{{languages}}</span></p>
           </div>
 
-          <div>
+          <div class="md:col-span-2">
             <h2 class="text-[16px] leading-6">Border Countries:</h2>
             <div class="flex gap-[10px] items-start justify-start flex-wrap pt-4">
-              <button [routerLink]="['/country', name]"
-                class="py-[6px] px-[32px] text-[12px] font-light bg-theme-secondary shadow rounded-sm"
-                *ngFor="let name of borderCountries">{{name}}</button>
+              <ng-container *ngIf="borderCountries.length!=0">
+                <button [routerLink]="['/country', name]"
+                  class="py-[6px] px-[32px] text-[12px] font-light bg-theme-secondary shadow rounded-sm"
+                  *ngFor="let name of borderCountries">{{name}}</button>
+              </ng-container>
+              <ng-container *ngIf="borderCountries.length==0">
+                <button class="py-[6px] px-[32px] text-[12px] font-light bg-theme-secondary shadow rounded-sm">No
+                  Borders Associated</button>
+              </ng-container>
             </div>
           </div>
         </div>
       </div>
     </article>
   </section>
+  }@else {
+  <app-country-failed />
   }
 </main>

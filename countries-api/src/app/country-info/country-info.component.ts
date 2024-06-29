@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CountriesService } from '../services/countries.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CountryLoaderComponent } from '../country-loader/country-loader.component';
+import { CountryFailedComponent } from '../country-failed/country-failed.component';
 
 @Component({
   selector: 'app-country-info',
   standalone: true,
-  imports: [CommonModule, RouterLink, CountryLoaderComponent],
+  imports: [CommonModule, RouterLink, CountryLoaderComponent, CountryFailedComponent],
   templateUrl: './country-info.component.html',
 })
 export class CountryInfoComponent implements OnInit {
